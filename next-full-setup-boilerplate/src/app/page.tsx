@@ -21,19 +21,18 @@ import { withTheme } from '@rjsf/core';
 import { Theme as shadcnTheme } from '@rjsf/shadcn';
 import { RJSFSchema } from '@rjsf/utils';
 import validator from '@rjsf/validator-ajv8';
-import {samples} from "@/samples";
-import {JSONSchema7} from "json-schema";
+import { samples } from '@/samples';
+import { JSONSchema7 } from 'json-schema';
 const Form = withTheme(shadcnTheme);
 
 export default function Page() {
   const { currentSample } = useStore((state) => state);
   const currentSchema = samples[currentSample] as unknown as {
-    schema: JSONSchema7 | RJSFSchema
-    uiSchema: object
-    formData?: object
+    schema: JSONSchema7 | RJSFSchema;
+    uiSchema: object;
+    formData?: object;
   };
 
-  // @ts-ignore
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -60,13 +59,13 @@ export default function Page() {
             <ModeToggle />
           </div>
         </header>
-        <div className='size-full p-4'>
+        <div className="size-full p-4">
           <Form
-              noHtml5Validate
-              schema={currentSchema.schema}
-              uiSchema={currentSchema.uiSchema}
-              formSchema={currentSchema.formData ?? {}}
-              validator={validator}
+            noHtml5Validate
+            schema={currentSchema.schema}
+            uiSchema={currentSchema.uiSchema}
+            formData={currentSchema.formData ?? {}}
+            validator={validator}
           />
         </div>
       </SidebarInset>
