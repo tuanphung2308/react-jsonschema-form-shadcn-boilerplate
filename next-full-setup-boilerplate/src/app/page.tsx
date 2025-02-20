@@ -23,6 +23,7 @@ import { RJSFSchema } from '@rjsf/utils';
 import validator from '@rjsf/validator-ajv8';
 import { samples } from '@/samples';
 import { JSONSchema7 } from 'json-schema';
+import { RTLToggle } from '@/components/rtl-toggle';
 const Form = withTheme(shadcnTheme);
 
 export default function Page() {
@@ -37,7 +38,7 @@ export default function Page() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b pr-4">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 rtl:pr-0">
           <div className="flex flex-row justify-between w-full">
             <div className="flex items-center gap-2 px-3">
               <SidebarTrigger />
@@ -56,7 +57,10 @@ export default function Page() {
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-            <ModeToggle />
+            <div className="flex items-center gap-2">
+              <RTLToggle />
+              <ModeToggle />
+            </div>
           </div>
         </header>
         <div className="size-full p-4">
