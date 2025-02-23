@@ -92,6 +92,10 @@ function App() {
     [setLiveSettings]
   );
 
+  const [formData, setFormData] = useState<any>(
+    currentSampleData.formData ?? {}
+  );
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -124,8 +128,8 @@ function App() {
         <div className="size-full p-4 flex flex-row gap-2">
           <div className="w-[500px]">
             <Editors
-              formData={liveSettings}
-              setFormData={setLiveSettings}
+              formData={formData}
+              setFormData={setFormData}
               schema={currentSampleData.schema}
               setSchema={setCurrentSampleSchema}
               uiSchema={currentSampleData.uiSchema}
@@ -141,9 +145,11 @@ function App() {
               noHtml5Validate
               schema={currentSampleData.schema}
               uiSchema={currentSampleData.uiSchema}
-              formData={currentSampleData.formData ?? {}}
+              formData={formData}
+              onChange={(e) => setFormData(e.formData)}
               validator={validator}
               {...liveSettings} // Only spread liveSettings, remove defaultLiveSettings
+              ref={playGroundFormRef}
             />
           </div>
         </div>
@@ -210,7 +216,6 @@ function App() {
                   // validator={localValidator}
                   onChange={handleSetLiveSettings}
                   uiSchema={liveSettingsSelectUiSchema}
-                  ref={playGroundFormRef}
                 >
                   <div />
                 </CnForm>
@@ -246,7 +251,7 @@ function App() {
             <RawValidatorTest
               validator={validator}
               schema={currentSampleData.schema}
-              formData={currentSampleData.formData}
+              formData={liveSettings}
             />
           </SidebarGroup>
         </SidebarContent>
