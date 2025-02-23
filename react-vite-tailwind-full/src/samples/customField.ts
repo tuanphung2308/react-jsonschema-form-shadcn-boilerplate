@@ -5,7 +5,6 @@ export default {
     type: 'object',
     definitions: {
       specialString: {
-        $id: '/schemas/specialString',
         type: 'string',
       },
     },
