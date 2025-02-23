@@ -31,7 +31,7 @@ import validator from '@rjsf/validator-ajv8';
 import { RTLToggle } from '@/components/rtl-toggle';
 import './App.css';
 import './styles/rtl.css';
-import { useCallback, useRef, useState } from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {
   LiveSettings,
   liveSettingsBooleanSchema,
@@ -95,6 +95,10 @@ function App() {
   const [formData, setFormData] = useState<any>(
     currentSampleData.formData ?? {}
   );
+
+  useEffect(() => {
+    setFormData(currentSampleData.formData);
+  }, [currentSample]);
 
   return (
     <SidebarProvider>
