@@ -1,0 +1,25 @@
+[dir="rtl"] * {
+  text-align: right;
+}
+
+/* Monaco editor specific overrides */
+[dir="rtl"] .monaco-editor,
+[dir="rtl"] .monaco-editor *,
+[dir="rtl"] .monaco-editor-background,
+[dir="rtl"] .monaco-editor .margin,  
+[dir="rtl"] .monaco-editor-background * {
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+/* Ensure the container behaves correctly */
+[dir="rtl"] .direction-rtl .monaco-editor {
+  direction: ltr !important;
+}
+
+/* Preserve line numbers alignment */
+[dir="rtl"] .monaco-editor .margin {
+  right: unset !important;
+  left: unset !important;
+}
+    

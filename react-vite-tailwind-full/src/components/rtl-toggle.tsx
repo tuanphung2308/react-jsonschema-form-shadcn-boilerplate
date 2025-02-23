@@ -17,6 +17,8 @@ export function RTLToggle() {
 
   const handleDirectionChange = (dir: 'ltr' | 'rtl') => {
     document.documentElement.setAttribute('dir', dir);
+    document.documentElement.classList.remove('ltr', 'rtl');
+    document.documentElement.classList.add(dir);
     setDirection(dir);
   };
 
