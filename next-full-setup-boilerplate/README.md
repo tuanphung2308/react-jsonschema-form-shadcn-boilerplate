@@ -30,7 +30,7 @@ npm pack
 ```json
 {
   "dependencies": {
-    "@rjsf/shadcn": "file:./artifacts/rjsf-shadcn-5.24.54.tgz"
+    "@rjsf/shadcn": "file:./artifacts/rjsf-shadcn-5.24.59.tgz"
   }
 }
 ```

@@ -1,10 +1,11 @@
 import { withTheme } from '@rjsf/core';
 import { Theme as shadcnTheme } from '@rjsf/shadcn';
 import validator from '@rjsf/validator-ajv8';
-import { forwardRef, useCallback } from 'react';
+import { FormEvent, forwardRef, useCallback } from 'react';
 import { useStore } from '@/store';
 import Editors from '@/components/editor';
 import { IChangeEvent } from '@rjsf/core';
+import { useToast } from '@/hooks/use-toast';
 
 const CnForm = withTheme(shadcnTheme);
 
@@ -19,6 +20,8 @@ export const AppMainContent = forwardRef<any>((_, ref) => {
     setCurrentFormData,
   } = useStore((state) => state);
 
+  const { toast } = useToast();
+
   const onFormDataChange = useCallback(
     ({ formData }: IChangeEvent, id?: string) => {
       if (id) {
@@ -27,6 +30,17 @@ export const AppMainContent = forwardRef<any>((_, ref) => {
       setCurrentFormData(formData);
     },
     [setCurrentFormData]
+  );
+
+  const onFormDataSubmit = useCallback(
+    ({ formData }: IChangeEvent, event: FormEvent<any>) => {
+      console.log('submitted formData', formData);
+      console.log('submit event', event);
+      toast({
+        title: 'Form submitted',
+      });
+    },
+    [toast]
   );
 
   return (
@@ -50,8 +64,11 @@ export const AppMainContent = forwardRef<any>((_, ref) => {
           uiSchema={currentSampleData.uiSchema}
           formData={currentFormData}
           onChange={onFormDataChange}
+          onSubmit={onFormDataSubmit}
           validator={validator}
           extraErrors={currentSampleData.extraErrors}
+          transformErrors={currentSampleData.transformErrors}
+          customValidate={currentSampleData.validate}
           {...liveSettings}
           ref={ref}
         />

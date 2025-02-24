@@ -9,6 +9,8 @@ interface SampleData {
   uiSchema: UiSchema;
   extraErrors?: ErrorSchema;
   formData: any;
+    validate?: (params: any) => any
+    transformErrors?: ErrorTransformer<any, RJSFSchema, any> | undefined;
 }
 
 const defaultLiveSettings: LiveSettings = {
