@@ -4,8 +4,10 @@ import { ErrorSchema, RJSFSchema, UiSchema } from '@rjsf/utils';
 import isEqualWith from 'lodash/isEqualWith';
 import { useTheme } from 'next-themes';
 import { useDirectionContext } from '@/contexts/direction-context';
+import {editor} from "monaco-editor";
+import IStandaloneEditorConstructionOptions = editor.IStandaloneEditorConstructionOptions;
 
-const monacoEditorOptions = {
+const monacoEditorOptions: IStandaloneEditorConstructionOptions = {
   minimap: {
     enabled: false,
   },
@@ -82,7 +84,7 @@ type EditorsProps = {
   formData: any;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
   extraErrors: ErrorSchema | undefined;
-  setExtraErrors: React.Dispatch<React.SetStateAction<ErrorSchema | undefined>>;
+  setExtraErrors: (error: ErrorSchema | undefined) => void;
 };
 
 export default function Editors({
@@ -96,21 +98,21 @@ export default function Editors({
   setUiSchema,
 }: EditorsProps) {
   const onSchemaEdited = useCallback(
-    (newSchema) => {
+    (newSchema: any) => {
       setSchema(newSchema);
     },
     [setSchema]
   );
 
   const onUISchemaEdited = useCallback(
-    (newUiSchema) => {
+    (newUiSchema: any) => {
       setUiSchema(newUiSchema);
     },
     [setUiSchema]
   );
 
   const onFormDataEdited = useCallback(
-    (newFormData) => {
+    (newFormData: any) => {
       if (
         !isEqualWith(newFormData, formData, (newValue, oldValue) => {
           // Since this is coming from the editor which uses JSON.stringify to trim undefined values compare the values
@@ -126,7 +128,7 @@ export default function Editors({
   );
 
   const onExtraErrorsEdited = useCallback(
-    (newExtraErrors) => {
+    (newExtraErrors: any) => {
       setExtraErrors(newExtraErrors);
     },
     [setExtraErrors]

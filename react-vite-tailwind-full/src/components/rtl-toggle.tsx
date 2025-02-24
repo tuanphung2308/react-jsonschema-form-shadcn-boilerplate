@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import { LanguagesIcon } from 'lucide-react';
 import { useDirectionContext } from '@/contexts/direction-context';
 

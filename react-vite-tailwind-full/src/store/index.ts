@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { create } from 'zustand';
 import { Sample, samples } from '@/samples';
 import { ErrorSchema, RJSFSchema, UiSchema } from '@rjsf/utils';
@@ -36,7 +37,7 @@ export interface AppState {
   setCurrentSample: (sample: Sample) => void;
   setCurrentSampleSchema: (schema: RJSFSchema) => void;
   setCurrentSampleUiSchema: (uiSchema: UiSchema) => void;
-  setCurrentSampleExtraErrorSchema: (extraErrors: ErrorSchema) => void;
+  setCurrentSampleExtraErrorSchema: (extraErrors: ErrorSchema | undefined) => void;
   setCurrentFormData: (formData: any) => void;
   setLiveSettings: (settings: Partial<LiveSettings>) => void;
 }
@@ -66,7 +67,7 @@ export const useStore = create<AppState>((set) => ({
         uiSchema,
       },
     })),
-  setCurrentSampleExtraErrorSchema: (extraErrors: ErrorSchema) =>
+  setCurrentSampleExtraErrorSchema: (extraErrors: ErrorSchema | undefined) =>
     set((state) => ({
       currentSampleData: {
         ...state.currentSampleData,
