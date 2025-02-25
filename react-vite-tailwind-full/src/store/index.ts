@@ -9,8 +9,8 @@ interface SampleData {
   uiSchema: UiSchema;
   extraErrors?: ErrorSchema;
   formData: any;
-    validate?: (params: any) => any
-    transformErrors?: ErrorTransformer<any, RJSFSchema, any> | undefined;
+  validate?: (params: any) => any;
+  transformErrors?: ErrorTransformer<any, RJSFSchema, any> | undefined;
 }
 
 const defaultLiveSettings: LiveSettings = {
@@ -24,8 +24,8 @@ const defaultLiveSettings: LiveSettings = {
   liveOmit: false,
   experimental_defaultFormStateBehavior: {
     arrayMinItems: {
-        populate: 'all',
-        mergeExtraDefaults: false
+      populate: 'all',
+      mergeExtraDefaults: false,
     },
     emptyObjectFields: 'populateAllDefaults',
   },
@@ -39,7 +39,9 @@ export interface AppState {
   setCurrentSample: (sample: Sample) => void;
   setCurrentSampleSchema: (schema: RJSFSchema) => void;
   setCurrentSampleUiSchema: (uiSchema: UiSchema) => void;
-  setCurrentSampleExtraErrorSchema: (extraErrors: ErrorSchema | undefined) => void;
+  setCurrentSampleExtraErrorSchema: (
+    extraErrors: ErrorSchema | undefined
+  ) => void;
   setCurrentFormData: (formData: any) => void;
   setLiveSettings: (settings: Partial<LiveSettings>) => void;
 }
@@ -49,12 +51,15 @@ export const useStore = create<AppState>((set) => ({
   currentSampleData: samples['Simple'],
   currentFormData: samples['Simple'].formData ?? {},
   liveSettings: defaultLiveSettings,
-  setCurrentSample: (sample: Sample) =>
+  setCurrentSample: (sample: Sample) => {
     set({
       currentSample: sample,
-      currentSampleData: samples[sample],
+      currentSampleData: {
+        ...samples[sample],
+      },
       currentFormData: samples[sample].formData ?? {},
-    }),
+    });
+  },
   setCurrentSampleSchema: (schema: RJSFSchema) =>
     set((state) => ({
       currentSampleData: {

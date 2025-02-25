@@ -31,6 +31,9 @@ import defaults from './defaults';
 import options from './options';
 import ifThenElse from './ifThenElse';
 import customField from './customField';
+import cryptoEx from "@/samples/cryptoEx.ts";
+import cryptoAdv from "@/samples/cryptoAdv.ts";
+import customCaptcha from "@/samples/customCaptcha.ts";
 
 export const samples = Object.freeze({
   Blank: { schema: {}, uiSchema: {}, formData: {} },
@@ -67,6 +70,9 @@ export const samples = Object.freeze({
   ErrorSchema: errorSchema,
   Defaults: defaults,
   'Custom Field': customField,
+  'Crypto': cryptoEx,
+  'Crypto Adv': cryptoAdv,
+  'Custom x2': customCaptcha
 } as const);
 
 export type Sample = keyof typeof samples;

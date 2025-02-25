@@ -6,6 +6,7 @@ import { useStore } from '@/store';
 import Editors from '@/components/editor';
 import { IChangeEvent } from '@rjsf/core';
 import { useToast } from '@/hooks/use-toast';
+import allWidget from "@/samples/custom-components/allWidget.ts";
 
 const CnForm = withTheme(shadcnTheme);
 
@@ -67,8 +68,7 @@ export const AppMainContent = forwardRef<any>((_, ref) => {
           onSubmit={onFormDataSubmit}
           validator={validator}
           extraErrors={currentSampleData.extraErrors}
-          transformErrors={currentSampleData.transformErrors}
-          customValidate={currentSampleData.validate}
+          widgets={allWidget}
           {...liveSettings}
           ref={ref}
         />
