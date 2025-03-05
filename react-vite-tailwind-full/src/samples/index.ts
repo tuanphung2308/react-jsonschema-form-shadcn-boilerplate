@@ -31,9 +31,13 @@ import defaults from './defaults';
 import options from './options';
 import ifThenElse from './ifThenElse';
 import customField from './customField';
-import cryptoEx from "@/samples/cryptoEx.ts";
-import cryptoAdv from "@/samples/cryptoAdv.ts";
-import customCaptcha from "@/samples/customCaptcha.ts";
+import cryptoEx from '@/samples/cryptoEx.ts';
+import cryptoAdv from '@/samples/cryptoAdv.ts';
+import customCaptcha from '@/samples/customCaptcha.ts';
+import customCalendar from '@/samples/custom-calendar.ts';
+import multiSelect from './multiSelect';
+import checkboxes from './checkboxes';
+import radios from './radioButtons';
 
 export const samples = Object.freeze({
   Blank: { schema: {}, uiSchema: {}, formData: {} },
@@ -70,9 +74,13 @@ export const samples = Object.freeze({
   ErrorSchema: errorSchema,
   Defaults: defaults,
   'Custom Field': customField,
-  'Crypto': cryptoEx,
+  Crypto: cryptoEx,
   'Crypto Adv': cryptoAdv,
-  'Custom x2': customCaptcha
+  'Custom x2': customCaptcha,
+  'Custom calendar': customCalendar,
+  'Select demo': multiSelect,
+  'Checkboxes demo': checkboxes,
+  'Radio demo': radios,
 } as const);
 
 export type Sample = keyof typeof samples;

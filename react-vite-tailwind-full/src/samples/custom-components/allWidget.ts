@@ -5,6 +5,7 @@ import {Widget} from "@rjsf/utils";
 import {ImageUploadWidget} from "@/samples/custom-components/ImageUploadWidget.tsx";
 import { CustomCaptchaWidget } from "./CustomCaptchaWidget";
 import {CustomMultiSelectWidget} from "@/samples/custom-components/CustomMultiSelectWidget.tsx";
+import CustomCalendarWidget from "@/components/custom-calendar-widget";
 
 const widgets: { [name: string]: Widget } = {
     ColorPicker: ColorPickerWidget,
@@ -12,7 +13,8 @@ const widgets: { [name: string]: Widget } = {
     AddressWidget: AddressWidget,
     ImageUploadWidget,
     CustomCaptchaWidget,
-    CustomMultiSelectWidget
+    CustomMultiSelectWidget,
+    CustomCalendarWidget
 }
 
 export default widgets;
