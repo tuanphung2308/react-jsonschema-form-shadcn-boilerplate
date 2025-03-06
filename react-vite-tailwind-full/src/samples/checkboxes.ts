@@ -260,7 +260,6 @@ export default {
   },
   formData: {
     singleCheckbox: false,
-    termsAccepted: false,
     hobbies: ['Reading', 'Gaming'],
     permissions: ['view_dashboard'],
     notificationPreferences: {
