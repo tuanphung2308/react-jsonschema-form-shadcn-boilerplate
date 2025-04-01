@@ -146,3 +146,9 @@ function Layout({ children, direction }) {
 <html dir="rtl">
 ```
 3. You can refer to `direction-context.tsx`, `direction-provider.tsx` and `rtl-toggle.tsx` for implementation.
+
+### Tailwind v4
+Add the following line to your equivalent global.css
+```
+@source "../node_modules/@rjsf/shadcn";
+```
